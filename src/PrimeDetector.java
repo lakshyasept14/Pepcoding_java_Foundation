@@ -1,13 +1,40 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class PrimeDetector  {
+public class PrimeDetector {
+    public static void numberInput() {
+        System.out.println("How many numbers to detect?");
+        int count;
 
-    static void number(int number) throws  NullPointerException{
-        if(number == -1){
-            throw new NullPointerException("Exiting....");
+        while (true) {
+            try {
+                Scanner scn = new Scanner(System.in);
+                count = scn.nextInt();
+                if (count == -1) {
+                    throw new NullPointerException("Exiting....");
+                } else if (count < -1) {
+                    throw new InputMismatchException();
+                }
+                for (int i = 1; i <= count; i++) {
+                    System.out.println("Enter number to check for prime or -1 to exit");
+                    number(scn.nextInt());
+                }
+                break;
+            } catch (InputMismatchException exception) {
+                System.out.println("Please enter a valid integer Or -1 to exit ");
+            } catch (NullPointerException exception) {
+                System.out.println(exception.getMessage());
+                break;
+            }
         }
-        else if (number < 1) {
+        System.out.println("Thank You");
+    }
+
+
+    private static void number(int number) throws NullPointerException {
+        if (number == -1) {
+            throw new NullPointerException("Exiting....");
+        } else if (number < 1) {
             System.out.println("Enter a valid number");
             number(new Scanner(System.in).nextInt());
         } else {
@@ -20,4 +47,5 @@ public class PrimeDetector  {
             System.out.println(" The number is prime.");
         }
     }
+
 }
