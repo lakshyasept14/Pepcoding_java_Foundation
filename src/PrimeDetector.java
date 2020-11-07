@@ -31,7 +31,6 @@ public class PrimeDetector {
     }
 
 
-
     private static void number(int number) throws NullPointerException {
         if (number == -1) {
             throw new NullPointerException("Exiting....");
